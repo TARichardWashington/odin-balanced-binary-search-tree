@@ -62,10 +62,21 @@ class Tree {
             }
         });
 
+        for (let i = 0; i < initialArray.length; i++) {
+            if (i === 0) {
+                continue;
+            }
+
+            if (initialArray[i] < initialArray[i - 1]) {
+                throw new RangeError('Array must be sorted smallest to largest');
+            }
+        }
+
         return true;
     }
 }
 
 //var tree1 = new Tree(1);
 //var tree2 = new Tree([1, 2, 3, 't']);
-var tree3 = new Tree([1, 2, 3, 4]);
+//var tree3 = new Tree([1, 2, 4, 3]);
+var tree4 = new Tree([1, 2, 3, 4]);
