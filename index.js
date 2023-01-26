@@ -39,6 +39,19 @@ console.log(parent.rightNode.data);
 
 class Tree {
     constructor(initialArray) {
+        this.checkInput(initialArray);
+
+        this._root = this.buildTree(initialArray);
+    }
+
+    buildTree(initialArray) {
+        this.checkInput(initialArray);
+        let root = new Node(10);
+
+        this._root = root;
+    }
+
+    checkInput(initialArray) {
         if (!(initialArray instanceof Array)) {
             throw new TypeError('Array required');
         }
@@ -47,7 +60,9 @@ class Tree {
             if (!Number.isInteger(item)) {
                 throw new TypeError('Array elements must be integers');
             }
-        })
+        });
+
+        return true;
     }
 }
 
