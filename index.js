@@ -29,3 +29,14 @@ class Node {
         this._data = data;
     }
 }
+
+var child1 = new Node(75);
+var child2 = new Node(100);
+var parent = new Node(85, child1, child2);
+
+console.log(parent.leftNode.data);
+console.log(parent.rightNode.data);
+
+class Tree {
+
+}
