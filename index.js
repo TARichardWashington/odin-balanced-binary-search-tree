@@ -38,5 +38,11 @@ console.log(parent.leftNode.data);
 console.log(parent.rightNode.data);
 
 class Tree {
-
+    constructor(initialArray) {
+        if (!(initialArray instanceof Array)) {
+            throw new TypeError('Array required');
+        }
+    }
 }
+
+var tree1 = new Tree(1);
