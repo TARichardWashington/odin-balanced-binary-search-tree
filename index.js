@@ -42,7 +42,15 @@ class Tree {
         if (!(initialArray instanceof Array)) {
             throw new TypeError('Array required');
         }
+
+        initialArray.forEach(item => {
+            if (!Number.isInteger(item)) {
+                throw new TypeError('Array elements must be integers');
+            }
+        })
     }
 }
 
-var tree1 = new Tree(1);
+//var tree1 = new Tree(1);
+//var tree2 = new Tree([1, 2, 3, 't']);
+var tree3 = new Tree([1, 2, 3, 4]);
