@@ -45,8 +45,12 @@ class Tree {
     }
 
     buildTree(initialArray) {
-        this.checkInput(initialArray);
-        let root = new Node(10);
+
+        let midIndex = Math.floor(initialArray.length / 2);
+
+        let root = new Node(initialArray[midIndex]);
+
+        console.log(root);
 
         this._root = root;
     }
