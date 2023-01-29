@@ -55,14 +55,6 @@ class Tree {
         newRoot.rightNode = this.buildTree(initialArray.slice(midElement + 1));
 
         return newRoot;
-
-        /*
-        const midpoint = Math.floor(initialArray.length / 2);
-        const newNode = new Node(initialArray[midpoint]);
-        newNode.leftChild = this.buildTree(initialArray.slice(0, midpoint));
-        newNode.rightChild = this.buildTree(initialArray.slice(midpoint + 1));
-        return newNode;*/
-
     }
 
     checkInput(initialArray) {
@@ -94,18 +86,41 @@ class Tree {
             node = this._root;
         }
 
-        if (node.rightNode !== null) {
-            this.prettyPrint(node.rightNode, `${prefix}${isLeft ? '│   ' : '    '}`, false);
+        if (node !== null) {
+
+            if (node.rightNode !== null) {
+                this.prettyPrint(node.rightNode, `${prefix}${isLeft ? '│   ' : '    '}`, false);
+            }
+            console.log(`${prefix}${isLeft ? '└── ' : '┌── '}${node.data}`);
+            if (node.leftNode !== null) {
+                this.prettyPrint(node.leftNode, `${prefix}${isLeft ? '    ' : '│   '}`, true);
+            }
+        } else {
+            console.log('│');
         }
-        console.log(`${prefix}${isLeft ? '└── ' : '┌── '}${node.data}`);
-        if (node.leftNode !== null) {
-            this.prettyPrint(node.leftNode, `${prefix}${isLeft ? '    ' : '│   '}`, true);
+    }
+
+    insert(value, node = null) {
+        // If there are no nodes set this as the root
+        if (this._root === null) {
+            this._root = new Node(value);
+            return this;
         }
+
+        // If no node supplied assume the root node
+        if (node === null) {
+            node = this._root;
+        }
+
+        // Mode down the tree until we get to a left
+
     }
 }
 
 //var tree1 = new Tree(1);
 //var tree2 = new Tree([1, 2, 3, 't']);
 //var tree3 = new Tree([1, 2, 4, 3]);
-var tree4 = new Tree([1, 2, 3, 4, 7, 25, 100, 245]);
+var tree4 = new Tree([]);
+tree4.prettyPrint();
+tree4.insert(1);
 tree4.prettyPrint();
