@@ -34,25 +34,35 @@ var child1 = new Node(75);
 var child2 = new Node(100);
 var parent = new Node(85, child1, child2);
 
-console.log(parent.leftNode.data);
-console.log(parent.rightNode.data);
+//console.log(parent.leftNode.data);
+//console.log(parent.rightNode.data);
 
 class Tree {
     constructor(initialArray) {
         this.checkInput(initialArray);
-
         this._root = this.buildTree(initialArray);
     }
 
     buildTree(initialArray) {
 
-        let midIndex = Math.floor(initialArray.length / 2);
+        if (initialArray.length === 0) {
+            return null;
+        }
 
-        let root = new Node(initialArray[midIndex]);
+        let midElement = Math.floor(initialArray.length / 2);
+        let newRoot = new Node(initialArray[midElement]);
+        newRoot.leftNode = this.buildTree(initialArray.slice(0, midElement));
+        newRoot.rightNode = this.buildTree(initialArray.slice(midElement + 1));
 
-        console.log(root);
+        return newRoot;
 
-        this._root = root;
+        /*
+        const midpoint = Math.floor(initialArray.length / 2);
+        const newNode = new Node(initialArray[midpoint]);
+        newNode.leftChild = this.buildTree(initialArray.slice(0, midpoint));
+        newNode.rightChild = this.buildTree(initialArray.slice(midpoint + 1));
+        return newNode;*/
+
     }
 
     checkInput(initialArray) {
@@ -83,4 +93,4 @@ class Tree {
 //var tree1 = new Tree(1);
 //var tree2 = new Tree([1, 2, 3, 't']);
 //var tree3 = new Tree([1, 2, 4, 3]);
-var tree4 = new Tree([1, 2, 3, 4]);
+var tree4 = new Tree([1, 2, 3, 4, 7, 25, 100, 245]);
