@@ -88,9 +88,24 @@ class Tree {
 
         return true;
     }
+
+    prettyPrint(node = null, prefix = '', isLeft = true) {
+        if (node === null) {
+            node = this._root;
+        }
+
+        if (node.rightNode !== null) {
+            this.prettyPrint(node.rightNode, `${prefix}${isLeft ? '│   ' : '    '}`, false);
+        }
+        console.log(`${prefix}${isLeft ? '└── ' : '┌── '}${node.data}`);
+        if (node.leftNode !== null) {
+            this.prettyPrint(node.leftNode, `${prefix}${isLeft ? '    ' : '│   '}`, true);
+        }
+    }
 }
 
 //var tree1 = new Tree(1);
 //var tree2 = new Tree([1, 2, 3, 't']);
 //var tree3 = new Tree([1, 2, 4, 3]);
 var tree4 = new Tree([1, 2, 3, 4, 7, 25, 100, 245]);
+tree4.prettyPrint();
