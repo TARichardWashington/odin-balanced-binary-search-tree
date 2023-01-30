@@ -101,8 +101,11 @@ class Tree {
     }
 
     insert(value, node = null) {
+        // Need to check for duplicates!
+
         // If there are no nodes set this as the root
         if (this._root === null) {
+            console.log('setting root');
             this._root = new Node(value);
             return this;
         }
@@ -112,15 +115,39 @@ class Tree {
             node = this._root;
         }
 
-        // Mode down the tree until we get to a left
+        // Move through the tree until we hit the required leaf
+        let inserted = null;
 
+        while (!inserted) {
+            if (value < node.data) {
+                if (node.leftNode === null) {
+                    node.leftNode = new Node(value);
+                    inserted = true;
+                } else {
+                    node = node.leftNode;
+                }
+            } else {
+                if (node.rightNode === null) {
+                    node.rightNode = new Node(value);
+                    inserted = true;
+                } else {
+                    node = node.rightNode;
+                }
+            }
+        }
     }
 }
 
 //var tree1 = new Tree(1);
 //var tree2 = new Tree([1, 2, 3, 't']);
-//var tree3 = new Tree([1, 2, 4, 3]);
-var tree4 = new Tree([]);
+var tree4 = new Tree([1, 2, 3, 4]);
+//4ar tree4 = new Tree([]);
 tree4.prettyPrint();
-tree4.insert(1);
+tree4.insert(7);
+tree4.insert(1000);
+tree4.insert(17);
+tree4.insert(108);
+tree4.insert(16);
+tree4.insert(11);
+tree4.insert(26);
 tree4.prettyPrint();
