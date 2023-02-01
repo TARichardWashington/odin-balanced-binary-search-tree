@@ -97,7 +97,7 @@ class Tree {
         }
     }
 
-    insert(value, node = null) {
+    insert(value) {
         // TODO: Check for duplicates!
 
         if (this._root === null) {
@@ -105,10 +105,7 @@ class Tree {
             return this;
         }
 
-        if (node === null) {
-            node = this._root;
-        }
-
+        let node = this._root;
         let inserted = false;
 
         while (!inserted) {
@@ -131,7 +128,10 @@ class Tree {
     }
 
     delete(value) {
-        if()
+        if (!value || !Number.isInteger(value)) {
+            throw new TypeError('Value to remove must be a number');
+        }
+
         let deleted = false;
     }
 }
@@ -149,3 +149,4 @@ tree4.insert(16);
 tree4.insert(11);
 tree4.insert(26);
 tree4.prettyPrint();
+tree4.delete(35);
