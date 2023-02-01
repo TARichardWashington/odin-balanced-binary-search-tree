@@ -136,8 +136,6 @@ class Tree {
         let deleted = false;
 
         while (!deleted) {
-            console.log(node.data);
-
             if (node.leftNode && node.leftNode.data === value) {
                 node.leftNode = null;
                 deleted = true;
@@ -145,7 +143,6 @@ class Tree {
                 node.rightNode = null;
                 deleted = true;
             }
-            // Node match let's go dow the tree
             else {
                 if (value < node.data) { // LHS
                     if (node.leftNode === null) {
