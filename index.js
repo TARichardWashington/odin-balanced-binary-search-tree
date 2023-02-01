@@ -110,7 +110,7 @@ class Tree {
             node = this._root;
         }
 
-        let inserted = null;
+        let inserted = false;
 
         while (!inserted) {
             if (value < node.data) {
