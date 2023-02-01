@@ -101,7 +101,6 @@ class Tree {
         // TODO: Check for duplicates!
 
         if (this._root === null) {
-            console.log('setting root');
             this._root = new Node(value);
             return this;
         }
@@ -129,6 +128,11 @@ class Tree {
                 }
             }
         }
+    }
+
+    delete(value) {
+        if()
+        let deleted = false;
     }
 }
 
