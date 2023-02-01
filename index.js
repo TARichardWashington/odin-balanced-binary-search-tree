@@ -132,7 +132,34 @@ class Tree {
             throw new TypeError('Value to remove must be a number');
         }
 
+        let node = this._root;
         let deleted = false;
+
+        while (!deleted) {
+            console.log(node.data);
+
+            if (node.leftNode && node.leftNode.data === value) {
+                node.leftNode = null;
+                deleted = true;
+            } else if (node.rightNode && node.rightNode.data === value) {
+                node.rightNode = null;
+                deleted = true;
+            }
+            // Node match let's go dow the tree
+            else {
+                if (value < node.data) { // LHS
+                    if (node.leftNode === null) {
+                        throw new Error('Value is not present in tree')
+                    }
+                    node = node.leftNode;
+                } else { // RHS
+                    if (node.rightNode === null) {
+                        throw new Error('Value is not present in tree')
+                    }
+                    node = node.rightNode;
+                }
+            }
+        }
     }
 }
 
@@ -140,7 +167,6 @@ class Tree {
 //var tree2 = new Tree([1, 2, 3, 't']);
 var tree4 = new Tree([1, 2, 3, 4]);
 //4ar tree4 = new Tree([]);
-tree4.prettyPrint();
 tree4.insert(7);
 tree4.insert(1000);
 tree4.insert(17);
@@ -149,4 +175,7 @@ tree4.insert(16);
 tree4.insert(11);
 tree4.insert(26);
 tree4.prettyPrint();
-tree4.delete(35);
+tree4.delete(11);
+tree4.prettyPrint();
+tree4.delete(1);
+tree4.prettyPrint();
