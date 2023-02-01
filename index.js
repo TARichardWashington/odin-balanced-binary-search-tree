@@ -34,9 +34,6 @@ var child1 = new Node(75);
 var child2 = new Node(100);
 var parent = new Node(85, child1, child2);
 
-//console.log(parent.leftNode.data);
-//console.log(parent.rightNode.data);
-
 class Tree {
     constructor(initialArray) {
         this.checkInput(initialArray);
@@ -101,21 +98,18 @@ class Tree {
     }
 
     insert(value, node = null) {
-        // Need to check for duplicates!
+        // TODO: Check for duplicates!
 
-        // If there are no nodes set this as the root
         if (this._root === null) {
             console.log('setting root');
             this._root = new Node(value);
             return this;
         }
 
-        // If no node supplied assume the root node
         if (node === null) {
             node = this._root;
         }
 
-        // Move through the tree until we hit the required leaf
         let inserted = null;
 
         while (!inserted) {
